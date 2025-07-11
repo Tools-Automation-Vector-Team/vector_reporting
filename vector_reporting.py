@@ -288,7 +288,6 @@ def get_host_support_data(hostname: str, metric_name: Union[str, List[str]], tim
     host_group = [g['group_name'] for g in host_group]
     host_group = list(set(groups) & set(host_group))
     supporting_data['host_group'] = host_group
-    print("before")
     os_type = zbx.get_metric_data(
         hostname=hostname,
         metric_name='Operating system',
@@ -296,7 +295,6 @@ def get_host_support_data(hostname: str, metric_name: Union[str, List[str]], tim
         time_to=time_to,
 
     )['data'][0]['value']
-    print("After")
     supporting_data['os_type'] = get_os_data(os_type)
     interfaces = []
     for metric in metric_name:
@@ -769,8 +767,6 @@ def plot_all_metrics(df, output_path="multi_series_plot.png", threshold=None, un
 
 def main_f(time_from: int, time_to: int, hostname: Optional[List[str]] = None, metric_name: Optional[List[str]] = None, report_type = None):
 
-    print(type(time_from),time_to,hostname,metric_name,report_type)
-
     if report_type == 'interface':
         interface_metric = []
         for metric in metric_name:
@@ -783,8 +779,6 @@ def main_f(time_from: int, time_to: int, hostname: Optional[List[str]] = None, m
             item = df['name']
             for i in item:
                 interface_metric.append(i)
-
-        print(f"hostname={hostname},metric_name={interface_metric},time_from={time_from},time_to={time_to}")
                         
         # Get time series data
         t = get_time_series_data(
@@ -854,7 +848,6 @@ def main_f(time_from: int, time_to: int, hostname: Optional[List[str]] = None, m
         time_from=time_from,
         time_to=time_to,)
 
-        print("\nOutput is Converted to dataframe")
         df = pd.DataFrame(result)
 
         df['Status'] = df['recovery_eventid'].isna().astype(int)
