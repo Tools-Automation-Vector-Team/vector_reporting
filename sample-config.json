@@ -1,0 +1,27 @@
+{
+    "api_name": "generate-report",
+    "method": "POST",
+    "host": "0.0.0.0",
+    "port": "5000",
+    "endpoint": "/generate-report",
+    "api_token": "<your_api_token>",
+
+    "email_details": {
+      "username": "<username>",
+      "password":"<password>",
+      "to_email": [
+        "<to_email>"
+    ],
+      "smtp_server": "smtp.gmail.com",
+      "smtp_port": 465
+    },
+    "database_config": {
+        "db_type": "mysql",
+        "host": "xxx.xxx.xxx.xxx",
+        "port": 3306,
+        "database": "zabbix",
+        "user": "<user-name>",
+        "password": "<password>",
+        "connection_timeout": 10
+    }
+}
