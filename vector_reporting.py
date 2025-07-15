@@ -870,7 +870,7 @@ def main_f(time_from: int, time_to: int, hostname: Optional[List[str]] = None, m
                 d = pd.DataFrame(d['data'])
                 pattern = rf"FS \[.*{re.escape(metric)}.*\]: Space: Used, in %"
                 df = d[d['name'].str.contains(pattern, regex=True)]
-                # df = d[d['name'].str.contains(f'FS [{metric_name}]: Space: Used in %')]
+                
                 item = df['name']
                 for i in item:
                     drive_metric.append(i)
