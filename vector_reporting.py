@@ -1215,7 +1215,6 @@ def main_f(time_from: int, time_to: int, hostname: Optional[List[str]] = None, m
             time_to=time_to)
         
         graph_path = plot_all_metrics(t[0], threshold=float(meta_data.get('threshold')) if meta_data.get('threshold') is not None else None)
-        # graph_path = plot_all_metrics(t[0])
 
         # Round values in main dataframe
         for col in t[0].columns:
